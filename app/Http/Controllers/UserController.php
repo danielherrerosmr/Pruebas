@@ -50,7 +50,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $where = array('id' => $id);
+         $data['user_info'] = User::where($where)->first();
+
+         return view('user.Show', $data);
     }
 
     /**
@@ -99,6 +102,6 @@ class UserController extends Controller
      {
          User::where('id',$id)->delete();
 
-         return Redirect::to('users')->with('success','User deleted successfully');
+         return Redirect::to('user')->with('success','User deleted successfully');
      }
 }

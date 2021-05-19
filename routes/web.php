@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('editar/{id?}', "UserController@edit")->name('users.edit');
-Route::get('eliminar/{id?}', "UserController@destroy")->name('users.destroy');
+Route::delete('eliminar/{id?}', "UserController@destroy")->name('users.destroy');
 Route::get('update{id?}', "UserController@update")->name('users.update');
 
 
@@ -31,6 +31,8 @@ Route::resource('user', 'UserController');
 
 
 Route::get('editar/{id}', 'UserController@edit');
+Route::get('show/{id}', 'UserController@show');
+
 
 Route::get('comprar/{id?}', 'GameController@comprar')->name('games.comprar');
 Route::get('edit/{id?}', 'GameController@edit')->name('games.edit');

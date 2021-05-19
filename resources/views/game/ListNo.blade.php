@@ -1,4 +1,4 @@
-@extends('game.Layout')
+@extends('layouts.app')
 
 @section('content')
    <div class="row">
@@ -13,6 +13,7 @@
                  <th>Edicion</th>
                  <th>Plataforma</th>
                  <th>Añadido a nuestra tienda</th>
+                 <th>Precio</th>
                  <td colspan="1">Action</td>
               </tr>
            </thead>
@@ -25,6 +26,7 @@
                  <td>{{ $game->edicion }}</td>
                  <td>{{ $game->plataforma }}</td>
                  <td>{{ date('Y-m-d', strtotime($game->created_at)) }}</td>
+                 <td>{{ $game->precio }}</td>
                  <td><a href="{{ route('games.comprar',$game->id)}}" class="btn btn-success">Comprar</a></td>
               </tr>
               @endforeach

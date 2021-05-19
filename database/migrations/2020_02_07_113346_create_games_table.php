@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->string('genero');
             $table->string('edicion');
             $table->string('plataforma');
+            $table->double('precio');
             $table->timestamps();
         });
     }

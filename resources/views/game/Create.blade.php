@@ -1,4 +1,4 @@
-@extends('game.Layout')
+@extends('layouts.app')
 
 @section('content')
 <h2 style="margin-top: 12px;" class="text-center">Añadir Videojuego</a></h2>
@@ -11,29 +11,36 @@
     <div class="col-md-12">
         <div class="form-group">
             <strong>Titulo</strong>
-            <input type="text" name="titulo" class="form-control" placeholder="Titulo">
+            <input type="text" name="titulo" class="form-control" placeholder="Titulo" required>
             <span class="text-danger">{{ $errors->first('titulo') }}</span>
         </div>
     </div>
     <div class="col-md-12">
         <div class="form-group">
             <strong>Genero</strong>
-            <input type="text" name="genero" class="form-control" placeholder="Genero">
+            <input type="text" name="genero" class="form-control" placeholder="Genero" required>
             <span class="text-danger">{{ $errors->first('genero') }}</span>
         </div>
     </div>
     <div class="col-md-12">
         <div class="form-group">
             <strong>Edicion</strong>
-            <textarea class="form-control" col="4" name="edicion" placeholder="Edicion"></textarea>
+            <textarea class="form-control" col="4" name="edicion" placeholder="Edicion" required></textarea>
             <span class="text-danger">{{ $errors->first('edicion') }}</span>
         </div>
     </div>
     <div class="col-md-12">
         <div class="form-group">
             <strong>Plataforma</strong>
-            <textarea class="form-control" col="4" name="plataforma" placeholder="Plataforma"></textarea>
+            <textarea class="form-control" col="4" name="plataforma" placeholder="Plataforma" required></textarea>
             <span class="text-danger">{{ $errors->first('plataforma') }}</span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <strong>Precio</strong>
+            <textarea class="form-control" col="4" name="precio" placeholder="Precio" required></textarea>
+            <span class="text-danger">{{ $errors->first('precio') }}</span>
         </div>
     </div>
     <div class="col-md-12">

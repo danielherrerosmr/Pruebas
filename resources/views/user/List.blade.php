@@ -1,4 +1,4 @@
-@extends('game.Layout')
+@extends('layouts.app')
 
 
 @section('content')

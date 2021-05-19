@@ -51,6 +51,7 @@ class GameController extends Controller
             'genero' => 'required',
             'edicion' => 'required',
             'plataforma' => 'required',
+            'precio' => 'required',
         ]);
 
         Game::create($request->all());
@@ -106,9 +107,10 @@ class GameController extends Controller
             'genero',
             'edicion',
             'plataforma',
+            'precio',
         ]);
 
-        $update = ['titulo' => $request->titulo, 'genero' => $request->genero, 'edicion' => $request->edicion, 'plataforma' => $request->plataforma];
+        $update = ['titulo' => $request->titulo, 'genero' => $request->genero, 'edicion' => $request->edicion, 'plataforma' => $request->plataforma, 'precio' => $request->precio];
         Game::where('id',$id)->update($update);
 
         return Redirect::to('games')
