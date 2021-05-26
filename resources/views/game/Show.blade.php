@@ -2,11 +2,10 @@
 
 @section('content')
 <h2 style="margin-top: 12px;" class="text-center">Pagina de Compra</a></h2>
-<br>
 
-<form action="{{ route('games.update', $game_info->id) }}" method="POST" name="update_game">
-{{ csrf_field() }}
-@method('PATCH')
+
+<form action="{{ route('payment') }}" method="POST" name="update_game">
+@csrf
 <div class="row pl-5">
     <div class="col-md-8">
         <div class="form-group">
@@ -46,7 +45,9 @@
     </div>
 
     <div class="col-md-8">
-        <button type="submit" class="btn btn-primary">Comprar</button>
+    <!-- <a href="{{ route('payment') }}" class="btn btn-success">Pay</a> -->
+    <input type="submit" value="pagar" class="btn btn-success">
+    <a href="https://www.sandbox.paypal.com/webapps/" class="btn btn-success">Cuenta de Paypal</a>
     </div>
 </div>
 

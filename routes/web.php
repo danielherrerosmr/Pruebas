@@ -50,3 +50,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/games', 'GameController@index');
 
 });
+
+Route::post('payment', 'PayPalController@payment')->name('payment');
+Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
+Route::get('payment/success', 'PayPalController@success')->name('payment.success');
