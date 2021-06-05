@@ -6,7 +6,7 @@
 
 <form action="{{ route('payment') }}" method="POST" name="update_game">
 @csrf
-<div class="row pl-5">
+<div class="">
     <div class="col-md-8">
         <div class="form-group">
             <strong>Titulo</strong>
@@ -39,15 +39,15 @@
     <div class="col-md-8">
         <div class="form-group">
             <strong>Precio</strong>
-            <input type="text" name="precio" class="form-control" placeholder="Precio" value="{{ $game_info->precio }}" readonly>
+            <input type="text" name="precio" class="form-control" placeholder="Precio" value="{{ $game_info->precio }}"  readonly>
             <span class="text-danger">{{ $errors->first('precio') }}</span>
         </div>
     </div>
 
     <div class="col-md-8">
-    <!-- <a href="{{ route('payment') }}" class="btn btn-success">Pay</a> -->
+
     <input type="submit" value="pagar" class="btn btn-success">
-    <a href="https://www.sandbox.paypal.com/webapps/" class="btn btn-success">Cuenta de Paypal</a>
+    
     </div>
 </div>
 

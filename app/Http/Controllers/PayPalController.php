@@ -48,6 +48,7 @@ class PayPalController extends Controller
      */
     public function cancel()
     {
+        return redirect('list')->with('alert','Ha ocurrido un Error, Compra Cancelada');
         dd('Your payment is canceled. You can create cancel page here.');
     }
   
@@ -62,9 +63,11 @@ class PayPalController extends Controller
         $response = $provider->getExpressCheckoutDetails($request->token);
   
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
+            return redirect('list')->with('message','Compra Exitosa, Gracias por su Compra');
             dd('Your payment was successfully. You can create success page here.');
+            
         }
-  
+        return redirect('list')->with('alert','Compra Cancelada');
         dd('Something is wrong.');
     }
 }

@@ -29,31 +29,72 @@
     </div>
 
     <!-- Header section -->
-    <header class="header-section">
-        <div class="container">
-            <!-- logo -->
-            <a class="site-logo" href="">
-                <img src="{{ asset('img/logo.png') }}" alt="">
-            </a>
-            <div class="user-panel">
-                <a href="/login">Iniciar Sesión</a> / <a href="/register">Registro</a>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <!-- logo -->
+                <a class="site-logo" href="/">
+                    <img src="{{ asset('img/logo.png') }}" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <nav class="main-menu">
+                        <ul class="">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="{{ action('GameController@index') }}">Store</a></li>
+                            <li><a href="">Blog</a></li>
+                            <li><a href="">Forums</a></li>
+                            <li><a href="">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}" style="color:#ffb320">{{ __('Iniciar Sesion') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}" style="color:#ffb320">{{ __('Registro') }}</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/show/{{ Auth::user()->id }} ">Ver perfil</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar sesion') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-            <!-- responsive -->
-            <div class="nav-switch">
-                <i class="fa fa-bars"></i>
-            </div>
-            <!-- site menu -->
-            <nav class="main-menu">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="{{ action('GameController@index') }}">Store</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Forums</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
     <!-- Header section end -->
 
 

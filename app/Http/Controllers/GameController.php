@@ -6,6 +6,7 @@ use App\Game;
 use Illuminate\Http\Request;
 use Redirect;
 use PDF;
+use DB;
 
 class GameController extends Controller
 {
@@ -128,6 +129,23 @@ class GameController extends Controller
         Game::where('id',$id)->delete();
 
         return Redirect::to('games')->with('success','Game deleted successfully');
+    }
+
+    //filtrar por plataforma
+    public function FiltrarPlataforma(){
+
+        $plataforma = request('plataforma') ;
+        $games = DB::table('games')->where('plataforma', '=', $plataforma)->paginate(100);
+        return view('game.ListNo', ['games'=>$games]);
+    }
+
+    //filtrar por Titulo
+    public function FiltrarTitulo(){
+
+        $titulo ="%" . request('titulo') . "%" ;
+        $games = DB::table('games')->where('titulo', 'like', $titulo)->paginate(100);
+        return view('game.ListNo', ['games'=>$games]);
+
     }
 
 }

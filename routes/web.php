@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
   
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,14 +51,21 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Grupo que nos permite redireccionar a una pagina distitan si el usuario es administrador
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/games', 'GameController@index');
 
 });
 
+//Rutas para el pago con PayPal
 Route::post('payment', 'PayPalController@payment')->name('payment');
 Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
 Route::get('payment/success', 'PayPalController@success')->name('payment.success');
 
+//Rutas para el inicio de sesión con Google
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+//Ruta de la función filtrar por plataforma
+Route::post("filtrar", [GameController::class, 'FiltrarPlataforma']);
+Route::post("FiltrarTitulo", [GameController::class, 'FiltrarTitulo']);
