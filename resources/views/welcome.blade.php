@@ -7,13 +7,13 @@
     <meta name="description" content="Game Warrior">
     <meta name="keywords" content="warrior, game, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
+    <!-- Icono -->
     <link href="{{ asset('img/favicon.ico') }}" rel="shortcut icon" />
 
-    <!-- Google Fonts -->
+    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
 
-    <!-- Stylesheets -->
+    <!-- Estilos -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}" />
@@ -23,12 +23,12 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
+    <!-- Precarga de la pagina -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
-    <!-- Header section -->
+    <!-- Header -->
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
@@ -43,20 +43,20 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Menú de navegación -->
                     <nav class="main-menu">
                         <ul class="">
                             <li><a href="/">Home</a></li>
                             <li><a href="{{ action('GameController@index') }}">Store</a></li>
                             <li><a href="">Blog</a></li>
                             <li><a href="">Forums</a></li>
-                            <li><a href="">Contact</a></li>
+                            <li><a href="{{ route('soporte.index') }}">Contact</a></li>
                         </ul>
                     </nav>
 
-                    <!-- Right Side Of Navbar -->
+                    <!-- Derecha del Menú -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        <!-- Link de Inicio Sesión/Registro -->
                         @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}" style="color:#ffb320">{{ __('Iniciar Sesion') }}</a>
@@ -95,10 +95,10 @@
             @yield('content')
         </main>
     </div>
-    <!-- Header section end -->
+    <!-- Final del Header -->
 
 
-    <!-- Hero section -->
+    <!-- Carrusel -->
     <section class="hero-section">
         <div class="hero-slider owl-carousel">
             <div class="hs-item set-bg" data-setbg="{{ asset('img/slider-1.jpg') }}">
@@ -121,10 +121,10 @@
             </div>
         </div>
     </section>
-    <!-- Hero section end -->
+    <!-- Final Carrusel -->
 
 
-    <!-- Latest news section -->
+    <!-- Ultimas Noticias -->
     <div class="latest-news-section">
         <div class="ln-title">Ultimas Noticias</div>
         <div class="news-ticker">
@@ -135,7 +135,7 @@
             </div>
         </div>
     </div>
-    <!-- Latest news section end -->
+    <!-- Final Ultimas noticias -->
 
 
     <!-- Feature section -->
@@ -196,7 +196,7 @@
     <!-- Feature section end -->
 
 
-    <!-- Recent game section  -->
+    <!-- Juegos recientes  -->
     <section class="recent-game-section spad set-bg" data-setbg="{{ asset('img/recent-game-bg.png') }}">
         <div class="container">
             <div class="section-title">
@@ -262,10 +262,10 @@
             </div>
         </div>
     </section>
-    <!-- Recent game section end -->
+    <!-- Final Juegos recientes -->
 
 
-    <!-- Tournaments section -->
+    <!-- Torneos -->
     <section class="tournaments-section spad">
         <div class="container">
             <div class="tournament-title">Torneos</div>
@@ -309,10 +309,10 @@
             </div>
         </div>
     </section>
-    <!-- Tournaments section bg -->
+    <!-- Final Torneos -->
 
 
-    <!-- Review section -->
+    <!-- Reseñas -->
     <section class="review-section spad set-bg" data-setbg="img/review-bg.png">
         <div class="container">
             <div class="section-title">
@@ -377,10 +377,10 @@
             </div>
         </div>
     </section>
-    <!-- Review section end -->
+    <!-- Final Reseñas -->
 
 
-    <!-- Footer top section -->
+    <!-- Footer parte de arriba -->
     <section class="footer-top-section">
         <div class="container">
             <div class="footer-top-bg">
@@ -466,10 +466,10 @@
             </div>
         </div>
     </section>
-    <!-- Footer top section end -->
+    <!-- Final Footer parte de arriba -->
 
 
-    <!-- Footer section -->
+    <!-- Footer parte de abajo -->
     <footer class="footer-section">
         <div class="container">
             <ul class="footer-menu">
@@ -486,10 +486,10 @@
             </p>
         </div>
     </footer>
-    <!-- Footer section end -->
+    <!-- Final Footer parte de abajo -->
 
 
-    <!--====== Javascripts & Jquery ======-->
+    <!-- Javascripts y Jquery -->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>

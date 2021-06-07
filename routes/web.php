@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
   
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\SoporteController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +72,13 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 //Ruta de la función filtrar por plataforma
 Route::post("filtrar", [GameController::class, 'FiltrarPlataforma']);
 Route::post("FiltrarTitulo", [GameController::class, 'FiltrarTitulo']);
+
+
+// Route::get('contacto', function () {
+//     return view('contacto');
+// });
+
+Route::get('contactanos', [SoporteController::class, 'index'])->name('soporte.index');
+
+Route::post('contactanos', [SoporteController::class, 'store'])->name('soporte.store');
+
