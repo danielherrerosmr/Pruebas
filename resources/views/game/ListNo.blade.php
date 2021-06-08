@@ -31,6 +31,7 @@
           <table class="table table-bordered table-dark table-hover" id="laravel_crud">
            <thead>
               <tr>
+                  <th>Imagen</th>
                  <th>Id</th>
                  <th>Titulo</th>
                  <th>Genero</th>
@@ -44,6 +45,7 @@
            <tbody>
               @foreach($games ?? '' as $game)
               <tr>
+                  <td><img src="{{ asset('storage'). '/' . $game->foto }}" width="100" height="180"  alt=""></td>
                  <td>{{ $game->id }}</td>
                  <td>{{ $game->titulo }}</td>
                  <td>{{ $game->genero }}</td>

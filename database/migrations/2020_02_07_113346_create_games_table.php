@@ -20,6 +20,7 @@ class CreateGamesTable extends Migration
             $table->string('edicion');
             $table->string('plataforma');
             $table->double('precio');
+            $table->string('foto');
             $table->timestamps();
         });
     }

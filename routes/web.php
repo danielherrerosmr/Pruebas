@@ -25,11 +25,11 @@ Route::get('/', function () {
 
 Route::get('editar/{id?}', "UserController@edit")->name('users.edit');
 Route::delete('eliminar/{id?}', "UserController@destroy")->name('users.destroy');
-Route::get('update{id?}', "UserController@update")->name('users.update');
+Route::post('update{id?}', "UserController@update")->name('users.update');
 
 
 Route::resource('games', 'GameController');
-Route::resource('games', 'GameController@comprar');
+//Route::resource('games', 'GameController@comprar');
 Route::get('list', 'GameController@list');
 
 
@@ -44,10 +44,10 @@ Route::get('show/{id}', 'UserController@show');
 
 Route::get('comprar/{id?}', 'GameController@comprar')->name('games.comprar');
 Route::get('edit/{id?}', 'GameController@edit')->name('games.edit');
-Route::get('update/{id?}', 'GameController@update')->name('games.update');
+//Route::post('update/{id?}', 'GameController@update')->name('games.update');
 Route::delete('destroy/{id?}', 'GameController@destroy')->name('games.destroy');
 Route::GET('create', 'GameController@create')->name('games.create');
-Route::GET('store', 'GameController@store')->name('games.store');
+Route::POST('store', 'GameController@store')->name('games.store');
 
 
 Auth::routes();

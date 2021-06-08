@@ -4,8 +4,9 @@
 <h2 style="margin-top: 12px;" class="text-center">Añadir Videojuego</a></h2>
 <br>
 
-<form action="{{ route('games.store') }}" method="GET" name="add_game" files="true">
-{{ csrf_field() }}
+<form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data" >
+<!-- {{ csrf_field() }} -->
+@csrf
 
 <div class="">
     <div class="col-md-8">
@@ -43,6 +44,15 @@
             <span class="text-danger">{{ $errors->first('precio') }}</span>
         </div>
     </div>
+
+    <div class="col-md-8">
+        <div class="form-group">
+            <strong>Foto</strong>
+            <input type="file" name="foto" id="foto" class="form-control" required>
+            <span class="text-danger">{{ $errors->first('foto') }}</span>
+        </div>
+    </div>
+
     <div class="col-md-8">
         <button type="submit" class="btn btn-primary">Aceptar</button>
     </div>

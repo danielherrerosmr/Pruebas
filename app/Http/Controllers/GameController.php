@@ -8,6 +8,10 @@ use Redirect;
 use PDF;
 use DB;
 
+use Illuminate\Support\Facades\Storage;
+
+
+
 class GameController extends Controller
 {
     /**
@@ -53,12 +57,20 @@ class GameController extends Controller
             'edicion' => 'required',
             'plataforma' => 'required',
             'precio' => 'required',
+            'foto' => 'required'
         ]);
 
-        Game::create($request->all());
+        //Game::create($request->all());
+        $games = request()->except('_token');
 
-        return Redirect::to('games')
-       ->with('success','Greate! Game created successfully.');
+            
+            if($request->hasFile('foto')){
+                $games['foto']=$request->file('foto')->store('uploads', 'public');
+            }
+
+          Game::insert($games);
+
+           return Redirect::to('games');
     }
 
     /**
@@ -111,11 +123,21 @@ class GameController extends Controller
             'precio',
         ]);
 
-        $update = ['titulo' => $request->titulo, 'genero' => $request->genero, 'edicion' => $request->edicion, 'plataforma' => $request->plataforma, 'precio' => $request->precio];
-        Game::where('id',$id)->update($update);
+        $games = $request->except(['_token','_method']);
 
-        return Redirect::to('games')
-       ->with('success','Great! Game updated successfully');
+        if($request->hasFile('foto')){
+            $game = Game::findOrFail($id);
+
+            Storage::delete('public/' . $game->foto);
+            
+            $games['foto']=$request->file('foto')->store('uploads', 'public');
+        }
+
+        Game::where('id','=',$id)->update($games);
+        //$update = ['titulo' => $request->titulo, 'genero' => $request->genero, 'edicion' => $request->edicion, 'plataforma' => $request->plataforma, 'precio' => $request->precio];
+        //Game::where('id',$id)->update($update);
+
+        return Redirect::to('games');
     }
 
     /**
@@ -126,9 +148,16 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        Game::where('id',$id)->delete();
 
-        return Redirect::to('games')->with('success','Game deleted successfully');
+        $game = Game::findOrFail($id);
+
+        if(Storage::delete('public/' . $game->foto)){
+
+            Game::where('id',$id)->delete();
+
+        }
+
+        return Redirect::to('games');
     }
 
     //filtrar por plataforma

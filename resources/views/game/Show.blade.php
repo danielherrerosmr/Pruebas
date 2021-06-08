@@ -7,6 +7,11 @@
 <form action="{{ route('payment') }}" method="POST" name="update_game">
 @csrf
 <div class="">
+    <div class="form-group">
+                <strong>Foto</strong>
+                <img src="{{ asset('storage'). '/' . $game_info->foto }}" width="100" height="180"  alt="">
+                <span class="text-danger">{{ $errors->first('foto') }}</span>
+            </div>
     <div class="col-md-8">
         <div class="form-group">
             <strong>Titulo</strong>
