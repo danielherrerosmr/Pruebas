@@ -1513,3 +1513,9 @@ ol {
 textarea {
     resize: none;
 }
+
+.transparent-input {
+	background-color: rgba(0, 0, 0, 0) !important;
+	border:none !important;
+	color: white;
+ }

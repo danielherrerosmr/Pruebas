@@ -5,7 +5,7 @@
         <div class="col-12">
 
           
-          <table class="table table-bordered table-dark table-hover" id="laravel_crud">
+          <table class="table table-bordered table-dark table-hover text-center" id="laravel_crud">
            <thead>
               <tr>
                   <th>Imagen</th>
@@ -14,7 +14,7 @@
                  <th>Genero</th>
                  <th>Edicion</th>
                  <th>Plataforma</th>
-                 <th>Añadido a nuestra tienda</th>
+                 <!-- <th>Añadido a nuestra tienda</th> -->
                  <th>Precio</th>
                  <td colspan="2">Action</td>
               </tr>
@@ -23,17 +23,17 @@
               @foreach($games ?? '' as $game)
               <tr>
                <td>
-                  <img src="{{ asset('storage'). '/' . $game->foto }}" width="100" height="180"  alt="">
+                  <img src="{{ asset('storage'). '/' . $game->foto }}" width="100" height="140"  alt="" class="rounded img-fluid">
                </td>
-                 <td>{{ $game->id }}</td>
-                 <td>{{ $game->titulo }}</td>
-                 <td>{{ $game->genero }}</td>
-                 <td>{{ $game->edicion }}</td>
-                 <td>{{ $game->plataforma }}</td>
-                 <td>{{ date('Y-m-d', strtotime($game->created_at)) }}</td>
-                 <td>{{ $game->precio }}€</td>
-                 <td><a href="{{ route('games.edit',$game->id)}}" class="btn btn-primary">Editar</a></td>
-                 <td>
+                 <td class="align-middle">{{ $game->id }}</td>
+                 <td class="align-middle">{{ $game->titulo }}</td>
+                 <td class="align-middle">{{ $game->genero }}</td>
+                 <td class="align-middle">{{ $game->edicion }}</td>
+                 <td class="align-middle">{{ $game->plataforma }}</td>
+                 <!-- <td class="align-middle">{{ date('Y-m-d', strtotime($game->created_at)) }}</td> -->
+                 <td class="align-middle">{{ $game->precio }}€</td>
+                 <td class="align-middle"><a href="{{ route('games.edit',$game->id)}}" class="btn btn-primary">Editar</a></td>
+                 <td class="align-middle">
                  <form action="{{ route('games.destroy', $game->id)}}" method="post">
                   {{ csrf_field() }}
                   @method('DELETE')
