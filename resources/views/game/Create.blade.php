@@ -18,29 +18,37 @@
     </div>
     <div class="col-md-8">
         <div class="form-group">
-            <strong>Genero</strong>
-            <input type="text" name="genero" class="form-control" placeholder="Genero" required>
+            <strong>Género</strong>
+            <select name="genero" id="1" class="form-control form-control-sm">
+                     @foreach ($generos as $genero)
+                        <option value="{{ $genero->nombre }}">{{$genero->nombre}}</option>
+                     @endforeach
+                </select>
             <span class="text-danger">{{ $errors->first('genero') }}</span>
         </div>
     </div>
     <div class="col-md-8">
         <div class="form-group">
             <strong>Edicion</strong>
-            <textarea class="form-control" col="4" name="edicion" placeholder="Edicion" required></textarea>
+            <input class="form-control" col="4" name="edicion" placeholder="Edicion" required></textarea>
             <span class="text-danger">{{ $errors->first('edicion') }}</span>
         </div>
     </div>
     <div class="col-md-8">
         <div class="form-group">
             <strong>Plataforma</strong>
-            <textarea class="form-control" col="4" name="plataforma" placeholder="Plataforma" required></textarea>
+            <select name="plataforma" id="1" class="form-control form-control-sm">
+                     @foreach ($plataformas as $plataforma)
+                        <option value="{{ $plataforma->nombre }}">{{$plataforma->nombre}}</option>
+                     @endforeach
+                </select>
             <span class="text-danger">{{ $errors->first('plataforma') }}</span>
         </div>
     </div>
     <div class="col-md-8">
         <div class="form-group">
             <strong>Precio</strong>
-            <textarea class="form-control" col="4" name="precio" placeholder="Precio" required></textarea>
+            <input class="form-control" col="4" name="precio" placeholder="Precio" required></textarea>
             <span class="text-danger">{{ $errors->first('precio') }}</span>
         </div>
     </div>

@@ -20,7 +20,7 @@ use App\Http\Controllers\SoporteController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('editar/{id?}', "UserController@edit")->name('users.edit');
@@ -82,3 +82,12 @@ Route::get('contactanos', [SoporteController::class, 'index'])->name('soporte.in
 
 Route::post('contactanos', [SoporteController::class, 'store'])->name('soporte.store');
 
+Route::resource('plataforma', 'PlataformaController');
+Route::resource('genero', 'GeneroController');
+
+
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});

@@ -3,7 +3,8 @@
 @section('content')
    <div class="">
         <div class="col-12">
-
+         
+         <a href="{{ route('user.index') }}" class="btn btn-primary mb-2 float-right">Lista de usuarios</a>
           
           <table class="table table-bordered table-dark table-hover text-center" id="laravel_crud">
            <thead>
@@ -44,7 +45,9 @@
               @endforeach
            </tbody>
           </table>
-          <a href="{{ route('games.create') }}" class="btn btn-success mb-2">Añadir Nuevo</a>
+          <a href="{{ route('games.create') }}" class="btn btn-success mb-2">Añadir Nuevo Videojuego</a>
+          <a href="{{ route('plataforma.create') }}" class="btn btn-success mb-2">Añadir Nueva Plataforma</a>
+          <a href="{{ route('genero.create') }}" class="btn btn-success mb-2">Añadir Nuevo Género</a>
        </div> 
 
        <div class="ml-3">

@@ -26,8 +26,17 @@
         </div>
         <div class="col-md-8">
             <div class="form-group">
-                <strong>Genero</strong>
-                <input type="text" name="genero" class="form-control" placeholder="Genero" value="{{ $game_info->genero }}" required>
+                <strong>Género</strong>
+                <select name="genero" id="1" class="form-control form-control-sm">
+                     @foreach ($generos as $genero)
+                        @if ($genero->nombre == $game_info->genero)
+                        <option value="{{ $genero->nombre }}" selected>{{$genero->nombre}}</option>
+                        @else
+                        <option value="{{ $genero->nombre }}">{{$genero->nombre}}</option>
+                        @endif
+                       
+                     @endforeach
+                </select>
                 <span class="text-danger">{{ $errors->first('genero') }}</span>
             </div>
         </div>
@@ -41,7 +50,15 @@
         <div class="col-md-8">
             <div class="form-group">
                 <strong>Plataforma</strong>
-                <input type="text" name="plataforma" class="form-control" placeholder="Plataforma" value="{{ $game_info->plataforma }}" required>
+                <select name="plataforma" id="1" class="form-control form-control-sm">
+                     @foreach ($plataformas as $plataforma)
+                        @if ($plataforma->nombre == $game_info->plataforma)
+                        <option value="{{ $plataforma->nombre }}" selected>{{$plataforma->nombre}}</option>
+                        @else
+                        <option value="{{ $plataforma->nombre }}">{{$plataforma->nombre}}</option>
+                        @endif
+                     @endforeach
+                </select>
                 <span class="text-danger">{{ $errors->first('plataforma') }}</span>
             </div>
         </div>

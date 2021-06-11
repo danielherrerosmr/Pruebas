@@ -46,11 +46,9 @@
                     <!-- Menú de navegación -->
                     <nav class="main-menu">
                         <ul class="">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="{{ action('GameController@index') }}">Store</a></li>
-                            <li><a href="">Blog</a></li>
-                            <li><a href="">Forums</a></li>
-                            <li><a href="{{ route('soporte.index') }}">Contact</a></li>
+                            <li><a href="/">Inicio</a></li>
+                            <li><a href="{{ action('GameController@index') }}">Tienda</a></li>
+                            <li><a href="{{ route('soporte.index') }}">Soporte</a></li>
                         </ul>
                     </nav>
 

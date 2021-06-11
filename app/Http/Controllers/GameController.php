@@ -29,8 +29,10 @@ class GameController extends Controller
     public function list()
     {
         $data['games'] = Game::orderBy('id','asc')->paginate(10);
+        $games = $data['games'];
+        $plataformas = DB::table('plataformas')->paginate(100);
 
-        return view('game.ListNo',$data);
+        return view('game.ListNo', compact('games', 'plataformas'));
     }
 
     /**
@@ -40,7 +42,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('game.Create');
+        return view('game.Create',['plataformas' => DB::table('plataformas')->paginate(100), 'generos' => DB::table('generos')->paginate(100) ]);
     }
 
     /**
@@ -93,9 +95,13 @@ class GameController extends Controller
     public function edit($id)
     {
         $where = array('id' => $id);
-        $data['game_info'] = Game::where($where)->first();
+        $game_info = Game::where($where)->first();
 
-        return view('game.Edit', $data);
+        $plataformas = DB::table('plataformas')->paginate(100);
+        $generos = DB::table('generos')->paginate(100);
+
+        return view('game.Edit', compact('game_info', 'plataformas', 'generos'));
+
     }
 
     public function comprar($id)
@@ -165,7 +171,7 @@ class GameController extends Controller
 
         $plataforma = request('plataforma') ;
         $games = DB::table('games')->where('plataforma', '=', $plataforma)->paginate(100);
-        return view('game.ListNo', ['games'=>$games]);
+        return view('game.ListNo', ['games'=>$games , 'plataformas' => DB::table('plataformas')->paginate(100)]);
     }
 
     //filtrar por Titulo
@@ -173,7 +179,7 @@ class GameController extends Controller
 
         $titulo ="%" . request('titulo') . "%" ;
         $games = DB::table('games')->where('titulo', 'like', $titulo)->paginate(100);
-        return view('game.ListNo', ['games'=>$games]);
+        return view('game.ListNo', ['games'=>$games, 'plataformas' => DB::table('plataformas')->paginate(100),]);
 
     }
 

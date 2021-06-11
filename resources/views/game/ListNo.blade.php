@@ -14,25 +14,26 @@
 
    <!-- Formulario para filtrar por plataforma -->
    <div class="form-group row">
+   <!-- Formulario para filtrar por Titulo -->
+      <form action="FiltrarTitulo" method="POST" class="form-inline">
+               <div class="form-group mx-sm-3 mb-2">
+                  @csrf
+                  <input type="text" name="titulo" class="form-control" placeholder="Titulo" >
+               </div>
+               <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+            </form>
+
       <form action="filtrar" method="POST" class="form-inline">
             <div class="form-group mx-sm-3 mb-2">
                @csrf
                   <select name="plataforma" id="1" class="form-control form-control-sm">
-                        <option selected>Elegir Plataforma</option>
-                        <option value="PC">PC</option>
-                        <option value="NDS">NDS</option>
+                     @foreach ($plataformas as $plataforma)
+                        <option value="{{ $plataforma->nombre }}">{{$plataforma->nombre}}</option>
+                     @endforeach
                   </select>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Filtrar</button>           
       </form>
-   <!-- Formulario para filtrar por Titulo -->
-         <form action="FiltrarTitulo" method="POST" class="form-inline">
-            <div class="form-group mx-sm-3 mb-2">
-               @csrf
-               <input type="text" name="titulo" class="form-control" placeholder="Titulo" >
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
-         </form>
        </div>
          
           <table class="table table-bordered table-dark table-hover text-center justifi-content-center" id="laravel_crud">
@@ -40,7 +41,7 @@
               <tr>
                <th>Imagen</th>
                <th>Titulo</th>
-               <th>Genero</th>
+               <th>Género</th>
                <th>Edicion</th>
                <th>Plataforma</th>
                <th>Precio</th>
@@ -48,7 +49,7 @@
               </tr>
            </thead>
            <tbody>
-              @foreach($games ?? '' as $game)
+              @foreach($games as $game)
               <tr>
                   <td><img src="{{ asset('storage'). '/' . $game->foto }}" width="100" height="140" class="rounded img-fluid" alt=""></td>
                  <td class="align-middle">{{ $game->titulo }}</td>

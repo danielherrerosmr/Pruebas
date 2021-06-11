@@ -4,7 +4,7 @@
 <h2 style="margin-top: 12px;" class="text-center">Editar Ususario</a></h2>
 <br>
 
-<form action="{{ route('users.update', $user_info->id) }}" method="GET" name="update_user">
+<form action="{{ url('/user/' .  $user_info->id) }}" method="POST" name="update_user">
 {{ csrf_field() }}
 @method('PATCH')
 
