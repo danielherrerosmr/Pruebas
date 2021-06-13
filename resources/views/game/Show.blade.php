@@ -7,13 +7,6 @@
 <form action="{{ route('payment') }}" method="POST" name="update_game">
 @csrf
 <div class="">
-    <!-- <div class="col-md-8">
-        <div class="form-group">
-                    <strong>Foto</strong>
-                    <img src="{{ asset('storage'). '/' . $game_info->foto }}" width="100" height="180"  alt="">
-                    <span class="text-danger">{{ $errors->first('foto') }}</span>
-            </div>
-    </div> -->
         
     <div class="col-md-8">
         <div class="form-group">
@@ -46,15 +39,14 @@
 
     <div class="col-md-8">
         <div class="form-group">
-            <strong>Precio</strong>
-            <input type="text" name="precio" class="form-control" placeholder="Precio" value="{{ $game_info->precio }}"  readonly>
+            <input type="hidden" name="precio" class="form-control" placeholder="Precio" value="{{ $game_info->precio }}"  readonly>
             <span class="text-danger">{{ $errors->first('precio') }}</span>
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 text-center">
 
-        <input type="submit" value="pagar  {{ $game_info->precio }}€"  class="btn btn-success">
+        <input type="submit" value="Pagar  {{ $game_info->precio }}€"  class="btn btn-success col-md-2">
     
     </div>
 </div>

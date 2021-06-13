@@ -140,9 +140,6 @@ class GameController extends Controller
         }
 
         Game::where('id','=',$id)->update($games);
-        //$update = ['titulo' => $request->titulo, 'genero' => $request->genero, 'edicion' => $request->edicion, 'plataforma' => $request->plataforma, 'precio' => $request->precio];
-        //Game::where('id',$id)->update($update);
-
         return Redirect::to('games');
     }
 

@@ -5,7 +5,6 @@
 <br>
 
 <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data" >
-<!-- {{ csrf_field() }} -->
 @csrf
 
 <div class="">

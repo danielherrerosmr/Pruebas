@@ -15,7 +15,6 @@
                  <th>Genero</th>
                  <th>Edicion</th>
                  <th>Plataforma</th>
-                 <!-- <th>Añadido a nuestra tienda</th> -->
                  <th>Precio</th>
                  <td colspan="2">Action</td>
               </tr>
@@ -31,7 +30,6 @@
                  <td class="align-middle">{{ $game->genero }}</td>
                  <td class="align-middle">{{ $game->edicion }}</td>
                  <td class="align-middle">{{ $game->plataforma }}</td>
-                 <!-- <td class="align-middle">{{ date('Y-m-d', strtotime($game->created_at)) }}</td> -->
                  <td class="align-middle">{{ $game->precio }}€</td>
                  <td class="align-middle"><a href="{{ route('games.edit',$game->id)}}" class="btn btn-primary">Editar</a></td>
                  <td class="align-middle">

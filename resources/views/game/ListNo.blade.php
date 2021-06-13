@@ -56,7 +56,6 @@
                  <td class="align-middle">{{ $game->genero }}</td>
                  <td class="align-middle">{{ $game->edicion }}</td>
                  <td class="align-middle">{{ $game->plataforma }}</td>
-                 <!-- <td>{{ date('Y-m-d', strtotime($game->created_at)) }}</td> -->
                  <td class="align-middle" >{{ $game->precio }}€</td>
                  <td class="align-middle"><a href="{{ route('games.comprar',$game->id)}}" class="btn btn-success">Comprar</a></td>
               </tr>
